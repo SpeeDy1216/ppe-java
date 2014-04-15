@@ -45,8 +45,12 @@ public class FrameCollocation extends javax.swing.JFrame {
         delete = new javax.swing.JButton();
         Update = new javax.swing.JButton();
         quit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        all = new javax.swing.JList();
+        edit = new javax.swing.JButton();
+        addColloque = new javax.swing.JButton();
+        deleteColloc = new javax.swing.JButton();
+        UpdateColloc = new javax.swing.JButton();
+        editColloc = new javax.swing.JButton();
+        csv = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -59,23 +63,24 @@ public class FrameCollocation extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Collocation");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Gestion de Collocation");
 
-        Ajouter.setText("Ajouter");
+        Ajouter.setText("Ajouter Participant");
         Ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AjouterActionPerformed(evt);
             }
         });
 
-        delete.setText("Supprimer");
+        delete.setText("Supprimer participants");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
 
-        Update.setText("Mettre à jour");
+        Update.setText("Consultation des participants");
         Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateActionPerformed(evt);
@@ -89,17 +94,42 @@ public class FrameCollocation extends javax.swing.JFrame {
             }
         });
 
-        all.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        all.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                allPropertyChange(evt);
+        edit.setText("Modification participants");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(all);
+
+        addColloque.setText("Ajouter Collocation");
+        addColloque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addColloqueActionPerformed(evt);
+            }
+        });
+
+        deleteColloc.setText("Supprimer Collocations");
+        deleteColloc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteCollocActionPerformed(evt);
+            }
+        });
+
+        UpdateColloc.setText("Consultation des collocations");
+        UpdateColloc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateCollocActionPerformed(evt);
+            }
+        });
+
+        editColloc.setText("Modification Collocations");
+        editColloc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editCollocActionPerformed(evt);
+            }
+        });
+
+        csv.setText("Importation CSV");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,41 +138,60 @@ public class FrameCollocation extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(175, 175, 175)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(156, 156, 156)
-                                .addComponent(quit)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                                .addComponent(addColloque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(UpdateColloc))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Ajouter)
-                                .addGap(59, 59, 59)
-                                .addComponent(Update)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                                .addComponent(delete)))))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Update)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(editColloc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deleteColloc))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(edit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(delete))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(csv))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(277, 277, 277)
+                        .addComponent(quit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(jLabel1)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ajouter)
                     .addComponent(delete)
-                    .addComponent(Update))
+                    .addComponent(Update)
+                    .addComponent(edit))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addColloque)
+                    .addComponent(deleteColloc)
+                    .addComponent(UpdateColloc)
+                    .addComponent(editColloc))
+                .addGap(26, 26, 26)
+                .addComponent(csv)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(quit)
-                .addContainerGap())
+                .addGap(79, 79, 79))
         );
 
         pack();
@@ -158,31 +207,37 @@ public class FrameCollocation extends javax.swing.JFrame {
     }//GEN-LAST:event_quitActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-        JOptionPane jop = null;
-        
-        DefaultListModel modele = new DefaultListModel();
-        all.setModel(modele);
-        
-        ArrayList <Personne> t = new ArrayList<Personne>();
-        
-        t = pers.findAll();
-        ArrayList<String>elements = new ArrayList<String>();
-     
-        for(Personne allT:t){
-            elements.add(allT.getNom());
-            //elements.addAll();
-        }
-        all.setListData(elements.toArray());
-        //jop.showMessageDialog(null, all.getModel().getElementAt(1).);
+        AfficherPersonne ap = new AfficherPersonne();
+        ap.setVisible(true);
     }//GEN-LAST:event_UpdateActionPerformed
 
-    private void allPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_allPropertyChange
-
-    }//GEN-LAST:event_allPropertyChange
-
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-       //p = new Personne(null, all.getName(), all.indexToLocation(1).toString());
+       SupprimerPersonne sp = new SupprimerPersonne();
+       sp.setVisible(true);
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editActionPerformed
+
+    private void addColloqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addColloqueActionPerformed
+        AjouterCollocation ac = new AjouterCollocation();
+        ac.setVisible(true);
+    }//GEN-LAST:event_addColloqueActionPerformed
+
+    private void deleteCollocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCollocActionPerformed
+        SupprimerCollocation sc = new SupprimerCollocation();
+        sc.setVisible(true);
+    }//GEN-LAST:event_deleteCollocActionPerformed
+
+    private void UpdateCollocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCollocActionPerformed
+        AfficherColloque ac = new AfficherColloque();
+        ac.setVisible(true);
+    }//GEN-LAST:event_UpdateCollocActionPerformed
+
+    private void editCollocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCollocActionPerformed
+
+    }//GEN-LAST:event_editCollocActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -221,12 +276,16 @@ public class FrameCollocation extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ajouter;
     private javax.swing.JButton Update;
-    private javax.swing.JList all;
+    private javax.swing.JButton UpdateColloc;
+    private javax.swing.JButton addColloque;
+    private javax.swing.JButton csv;
     private javax.swing.JButton delete;
+    private javax.swing.JButton deleteColloc;
+    private javax.swing.JButton edit;
+    private javax.swing.JButton editColloc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList jList1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton quit;
     // End of variables declaration//GEN-END:variables

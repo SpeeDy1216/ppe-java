@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class Connexion {
-	private static String url = "jdbc:mysql://127.0.0.1/base_java";
+	private static String url = "jdbc:mysql://127.0.0.1/slam3_tp6";
 	//private static String url = "jdbc:postgresql://127.0.0.1/base_java";
 	private static String user = "root";
 	private static String passwd = "";

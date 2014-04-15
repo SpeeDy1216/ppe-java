@@ -43,16 +43,23 @@ public class FrameAjouter extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         ajouter = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        organis = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        observation = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        mail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nom");
+        jLabel1.setText("Nom:");
 
-        jLabel2.setText("Prenom");
+        jLabel2.setText("Prenom:");
 
-        jLabel3.setText("Date de naissance");
+        jLabel3.setText("Date de naissance(AAAA-JJ-MM):");
 
-        jLabel4.setText("AJOUTER");
+        jLabel4.setText("AJOUTER PARTICIPANT");
 
         ajouter.setText("Ajouter");
         ajouter.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +74,16 @@ public class FrameAjouter extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Organisation :");
+
+        jLabel6.setText("Observations :");
+
+        observation.setColumns(20);
+        observation.setRows(5);
+        jScrollPane1.setViewportView(observation);
+
+        jLabel8.setText("Mail:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,14 +103,31 @@ public class FrameAjouter extends javax.swing.JFrame {
                             .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(naissance, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
+                        .addGap(282, 282, 282)
                         .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(organis, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
                         .addComponent(ajouter)
-                        .addGap(26, 26, 26)
+                        .addGap(43, 43, 43)
                         .addComponent(cancel)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,11 +146,25 @@ public class FrameAjouter extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(organis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(82, 82, 82))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ajouter)
                     .addComponent(cancel))
-                .addGap(66, 66, 66))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,7 +175,7 @@ public class FrameAjouter extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
-        p = new Personne(nom.getText(),prenom.getText(),naissance.getText());
+        p = new Personne(this.nom.getText(),this.prenom.getText(),this.naissance.getText(),this.mail.getText(),this.organis.getText(),this.observation.getText());
         pers.create(p);
         jop.showMessageDialog(null, "Participant ajouté");
        setVisible(false);
@@ -175,8 +223,15 @@ public class FrameAjouter extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField mail;
     private javax.swing.JTextField naissance;
     private javax.swing.JTextField nom;
+    private javax.swing.JTextArea observation;
+    private javax.swing.JTextField organis;
     private javax.swing.JTextField prenom;
     // End of variables declaration//GEN-END:variables
 }
