@@ -34,7 +34,7 @@ public class CsvParticipantsDAO extends ParticipantsDAO<Personne>{
 					temp[lineID] = strTocken.nextToken();
 					lineID++;
 				}
-				value = new Personne(temp[0], temp[1], temp[2], temp[3]);
+				value = new Personne(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5], temp[6]);
 				participants.add(value);
 			}
 		}

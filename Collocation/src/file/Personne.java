@@ -40,6 +40,16 @@ public class Personne {
         this.organisation = organisation;
         this.observations = observations;
     }
+    
+    public Personne(String num_pers,String nom, String prenom, String date_naiss, String email, String organisation, String observations) {
+        this.num_perss = num_pers;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.date_naiss = date_naiss;
+        this.organisation = organisation;
+        this.observations = observations;
+    }
 
     public String getOrganisation() {
         return organisation;

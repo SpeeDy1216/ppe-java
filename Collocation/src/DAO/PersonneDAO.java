@@ -35,6 +35,28 @@ public class PersonneDAO extends dao<Personne> {
         return t;
     }
 
+    public Personne findPersonne(String nom, String prenom){
+        Personne p = new Personne();
+        try {
+            ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeQuery(
+                    "SELECT * FROM personne WHERE nom = '" + nom + "' AND prenom ='" + prenom+"'");
+
+            if (result.first()) {
+                p = new Personne(result.getInt("num_pers"), 
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("date_naiss"),
+                        result.getString("email"),
+                        result.getString("organisation"),
+                        result.getString("observations"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return p;
+    }
+    
     public Personne find(long id) {
         Personne p = new Personne();
         try {

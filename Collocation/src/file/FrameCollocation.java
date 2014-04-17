@@ -130,6 +130,11 @@ public class FrameCollocation extends javax.swing.JFrame {
         });
 
         csv.setText("Importation CSV");
+        csv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csvActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,7 +222,8 @@ public class FrameCollocation extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        // TODO add your handling code here:
+        ModifParticipant mp = new ModifParticipant();
+        mp.setVisible(true);
     }//GEN-LAST:event_editActionPerformed
 
     private void addColloqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addColloqueActionPerformed
@@ -238,6 +244,11 @@ public class FrameCollocation extends javax.swing.JFrame {
     private void editCollocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCollocActionPerformed
 
     }//GEN-LAST:event_editCollocActionPerformed
+
+    private void csvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvActionPerformed
+        csv c = new csv();
+        c.setVisible(true);
+    }//GEN-LAST:event_csvActionPerformed
     /**
      * @param args the command line arguments
      */
