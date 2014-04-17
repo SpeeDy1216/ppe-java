@@ -106,7 +106,7 @@ public class SupprimerCollocation extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Consultations des collocations");
+        jLabel1.setText("Supprimer des collocations");
 
         btnCancel.setText("Annuler");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {

@@ -239,7 +239,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consultations des participants"/>
+        <Property name="text" type="java.lang.String" value="Supprimer des participants"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="supprimer">

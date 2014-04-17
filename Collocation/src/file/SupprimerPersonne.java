@@ -141,7 +141,7 @@ public class SupprimerPersonne extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Consultations des participants");
+        jLabel1.setText("Supprimer des participants");
 
         supprimer.setText("Supprimer Participant");
         supprimer.addActionListener(new java.awt.event.ActionListener() {

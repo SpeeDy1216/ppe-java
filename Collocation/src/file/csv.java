@@ -23,6 +23,7 @@ public class csv extends javax.swing.JFrame {
      */
     public csv() {
         initComponents();
+        jFileChooser1.setVisible(false);
     }
 
     /**
