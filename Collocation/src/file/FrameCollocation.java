@@ -242,7 +242,8 @@ public class FrameCollocation extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateCollocActionPerformed
 
     private void editCollocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCollocActionPerformed
-
+        ModifCollocation mc = new ModifCollocation();
+        mc.setVisible(true);
     }//GEN-LAST:event_editCollocActionPerformed
 
     private void csvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvActionPerformed

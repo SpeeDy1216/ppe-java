@@ -3,42 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package file;
 
-import DAO.PersonneDAO;
-import java.awt.Color;
-import java.awt.Graphics;
-import static java.lang.System.console;
-import javax.swing.JPanel;
+import DAO.ColloqueDAO;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author SpeeDy1216
  */
-public class ModifParticipant extends javax.swing.JFrame {
+public class ModifCollocation extends javax.swing.JFrame {
 
     /**
-     * Creates new form ModifParticipant
+     * Creates new form ModifCollocation
      */
-    public ModifParticipant() {
+    public ModifCollocation() {
         initComponents();
-    }
-
-    public void Fenetre(Personne p) {
-        this.setTitle("Ma première fenêtre Java");
-        this.setSize(600, 600);
-        this.setLocationRelativeTo(null);
-        Graphics g = null;
-        //Instanciation d'un objet JPanel
-        JPanel pan = new JPanel();
-        //Définition de sa couleur de fond
-        pan.setBackground(Color.WHITE);
-
-        g.drawString("kok", 10, 20);
-        //On prévient notre JFrame que notre JPanel sera son content pane
-        this.setContentPane(pan);
-        this.setVisible(true);
     }
 
     /**
@@ -50,18 +32,14 @@ public class ModifParticipant extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nom = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        prenom = new javax.swing.JTextField();
         btnmodif = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        nom = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nom:");
-
-        jLabel2.setText("Prenom:");
+        jLabel1.setText("libellé:");
 
         btnmodif.setText("Voir/Modifier");
         btnmodif.addActionListener(new java.awt.event.ActionListener() {
@@ -70,43 +48,37 @@ public class ModifParticipant extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Modification d'un participant");
+        jLabel3.setText("Modification d'une collocation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnmodif)
-                            .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnmodif)
+                        .addGap(163, 163, 163))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(118, 118, 118))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))
+                        .addGap(122, 122, 122))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(42, 42, 42)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(58, 58, 58)
+                .addGap(56, 56, 56)
                 .addComponent(btnmodif)
                 .addContainerGap(106, Short.MAX_VALUE))
         );
@@ -115,8 +87,14 @@ public class ModifParticipant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnmodifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodifActionPerformed
-        Personne personne;
-        PersonneDAO pers = new PersonneDAO();
+        Collocation personne;
+        ColloqueDAO pers = new ColloqueDAO() {
+
+            @Override
+            public ArrayList findAll() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         JOptionPane j = new JOptionPane();
         personne = pers.findPersonne(this.nom.getText(), this.prenom.getText());
 
@@ -140,20 +118,20 @@ public class ModifParticipant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModifParticipant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifCollocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModifParticipant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifCollocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModifParticipant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifCollocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModifParticipant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifCollocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModifParticipant().setVisible(true);
+                new ModifCollocation().setVisible(true);
             }
         });
     }
@@ -161,9 +139,7 @@ public class ModifParticipant extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnmodif;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField nom;
-    private javax.swing.JTextField prenom;
     // End of variables declaration//GEN-END:variables
 }
