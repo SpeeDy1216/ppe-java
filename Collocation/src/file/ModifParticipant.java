@@ -25,22 +25,6 @@ public class ModifParticipant extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void Fenetre(Personne p) {
-        this.setTitle("Ma première fenêtre Java");
-        this.setSize(600, 600);
-        this.setLocationRelativeTo(null);
-        Graphics g = null;
-        //Instanciation d'un objet JPanel
-        JPanel pan = new JPanel();
-        //Définition de sa couleur de fond
-        pan.setBackground(Color.WHITE);
-
-        g.drawString("kok", 10, 20);
-        //On prévient notre JFrame que notre JPanel sera son content pane
-        this.setContentPane(pan);
-        this.setVisible(true);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,12 +99,13 @@ public class ModifParticipant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnmodifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodifActionPerformed
-        Personne personne;
+        Personne personne = new Personne();
         PersonneDAO pers = new PersonneDAO();
         JOptionPane j = new JOptionPane();
         personne = pers.findPersonne(this.nom.getText(), this.prenom.getText());
-
-        this.Fenetre(personne);
+        
+        modPers fa = new modPers(personne);
+        fa.setVisible(true);
     }//GEN-LAST:event_btnmodifActionPerformed
 
     /**

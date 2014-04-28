@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class PersonneDAO extends dao<Personne> {
 
@@ -37,18 +38,20 @@ public class PersonneDAO extends dao<Personne> {
 
     public Personne findPersonne(String nom, String prenom){
         Personne p = new Personne();
+        JOptionPane j = new JOptionPane();
         try {
             ResultSet result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeQuery(
                     "SELECT * FROM personne WHERE nom = '" + nom + "' AND prenom ='" + prenom+"'");
 
             if (result.first()) {
-                p = new Personne(result.getInt("num_pers"), 
+                p = new Personne(result.getString("num_pers"), 
                         result.getString("nom"),
                         result.getString("prenom"),
                         result.getString("date_naiss"),
                         result.getString("email"),
                         result.getString("organisation"),
                         result.getString("observations"));
+                j.showMessageDialog(null, "Participant trouvé");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -125,7 +128,7 @@ public class PersonneDAO extends dao<Personne> {
             this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE).executeUpdate(
-                            "UPDATE personne SET nom = '" + obj.getNom() + "'" + " WHERE num_pers= " + obj.getNum_pers());
+                            "UPDATE personne SET nom='" + obj.getNom() + "', prenom='" + obj.getPrenom() + "', date_naiss='" + obj.getDate_naiss() + "', email='" + obj.getEmail() + "', organisation='" + obj.getOrganisation() + "', observations='" + obj.getObservations() + "' WHERE num_pers='" + obj.getNum_pers() + "' ");
 
             obj = this.find(obj.getNum_pers());
         } catch (SQLException e) {

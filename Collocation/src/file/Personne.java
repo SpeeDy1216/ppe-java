@@ -100,6 +100,10 @@ public class Personne {
         this.prenom = prenom;
     }
 
+    public String getNum_perss() {
+        return num_perss;
+    }
+
     public String getDate_naiss() {
         return date_naiss;
     }
